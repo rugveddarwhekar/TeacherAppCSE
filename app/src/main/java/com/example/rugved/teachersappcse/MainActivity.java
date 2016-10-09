@@ -1,5 +1,6 @@
 //----------THE ORIGINAL CODE STARTS-----------------------------------------------------
 /*
+
 package com.example.rugved.teachersappcse;
 
 import android.os.Bundle;
@@ -16,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
 }
 */
 //-------------THE ORIGINAL CODE ENDS--------------------------------------------------
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     TextView rollnumber;
     TextView yr;
     int id =0;
-    Notification n;
+
     String Name;
     String roll;
     String year;
@@ -110,23 +110,23 @@ public class MainActivity extends AppCompatActivity {
 
 
         //  tryimg = (ImageView)findViewById(R.id.imagetool);
-        Name = SaveSharedPreference.getUserName(MainActivity.this);
-        roll = SaveSharedPreference.getUserRoll(MainActivity.this);
-        year = SaveSharedPreference.getUserYear(MainActivity.this);
-        image = SaveSharedPreference.getUserImage(MainActivity.this);
+//        Name = SaveSharedPreference.getUserName(MainActivity.this);
+//        roll = SaveSharedPreference.getUserRoll(MainActivity.this);
+//        year = SaveSharedPreference.getUserYear(MainActivity.this);
+//        image = SaveSharedPreference.getUserImage(MainActivity.this);
+//
 
 
-
-        if(SaveSharedPreference.getUserName(MainActivity.this).length() == 0)
-        {
-            Intent i = new Intent(MainActivity.this,LoginActivity.class);
-            startActivity(i);
-            finish();
-        }
-        else
-        {
-
-        }
+//        if(SaveSharedPreference.getUserName(MainActivity.this).length() == 0)
+//        {
+//            Intent i = new Intent(MainActivity.this,LoginActivity.class);
+//            startActivity(i);
+//            finish();
+//        }
+//        else
+//        {
+//
+//        }
 
         web.add("HELLO "+Name);
         web.add("NOTIFICATIONS");
@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     Intent i = new Intent(LoginSuccesss.this, Notification_display.class);
                     startActivity(i);*/
-                }
+
 //               if(position==3)
 //               {
 //                   Toast.makeText(LoginSuccesss.this,"New notification generated!",Toast.LENGTH_SHORT ).show();
@@ -223,17 +223,19 @@ public class MainActivity extends AppCompatActivity {
 //                   uniqueID[0]++;
 //               }
 
-                if(position==2)
-                {
-                    Intent i = new Intent(MainActivity.this,TimeLine.class);
-                    i.putExtra("name",Name);
-                    i.putExtra("image",image);
-                    i.putExtra("year",year);
-                    Log.i("andro","year"+year);
-                    startActivity(i);
-                }
+//            if(position==2)
+//
+//            {
+//                Intent i = new Intent(MainActivity.this, TimeLine.class);
+//                i.putExtra("name", Name);
+//                i.putExtra("image", image);
+//                i.putExtra("year", year);
+//                Log.i("andro", "year" + year);
+//                startActivity(i);
+//            }
 
-                if(position==6)
+                if (position == 6)
+
                 {
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -243,15 +245,13 @@ public class MainActivity extends AppCompatActivity {
                             .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     SaveSharedPreference.clearUserName(MainActivity.this);
-                                    Intent i = new Intent(MainActivity.this,LoginActivity.class);
+                                    Intent i = new Intent(MainActivity.this, LoginActivity.class);
                                     startActivity(i);
                                     finish();
                                 }
                             });
-                    builder.setNegativeButton("NO", new DialogInterface.OnClickListener()
-                    {
-                        public void onClick(DialogInterface dialog, int which)
-                        {
+                    builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
                             return;
                         }
                     });
@@ -259,15 +259,15 @@ public class MainActivity extends AppCompatActivity {
 
 
                 }
-
             }
         });
 
-        try {
-            File myfile = new File(Environment.getExternalStorageDirectory(), "profile.jpg");
-            BitmapDrawable d = new BitmapDrawable(getResources(), myfile.getAbsolutePath());
-            Bitmap a = d.getBitmap();
-            Log.d("andro",image);
+
+            try{
+                File myfile = new File(Environment.getExternalStorageDirectory(), "profile.jpg");
+                BitmapDrawable d = new BitmapDrawable(getResources(), myfile.getAbsolutePath());
+                Bitmap a = d.getBitmap();
+                Log.d("andro", image);
 //            byte[] decodebytes = Base64.decode(image.getBytes(),Base64.NO_PADDING);
 //
 //            BitmapFactory.Options options = new BitmapFactory.Options();
@@ -288,21 +288,21 @@ public class MainActivity extends AppCompatActivity {
 //
 //            Log.d("andro","bitmap"+image.getBytes());
 
-            // a=  DecodeBase64(image);
+                // a=  DecodeBase64(image);
 
 
-            Bitmap round = getRoundedShape(a);
-            // String text = a.toString();
-            //    Log.d("andro","imagecode"+a.toString());
-            //tryimg.setImageBitmap(round);
-        }
-        catch(NullPointerException ex) {
+                Bitmap round = getRoundedShape(a);
+                // String text = a.toString();
+                //    Log.d("andro","imagecode"+a.toString());
+                //tryimg.setImageBitmap(round);
+            }
 
-            Log.d("andro",ex.toString());
-        }
+            catch (Exception ex)
+            {
+                Log.d("andro", ex.toString());
+            }
+        };
 
-
-    }
     public Bitmap getRoundedShape(Bitmap scaleBitmapImage) {
         int targetWidth = 200;
         int targetHeight = 200;

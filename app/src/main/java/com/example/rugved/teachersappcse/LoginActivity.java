@@ -276,6 +276,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 new ArrayAdapter<>(LoginActivity.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
 
+
         mEmailView.setAdapter(adapter);
     }
 
@@ -333,6 +334,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
+                //-----Enter intent here-------
                 finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
